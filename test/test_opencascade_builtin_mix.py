@@ -19,11 +19,23 @@ def test():
     l3 = geom.add_line(p3, p0)
     ll0 = geom.add_line_loop([l0, l1, l2, l3])
     square_builtin = geom.add_plane_surface(ll0)
+
+    # pts, _, _, _, _ = pygmsh.generate_mesh(geom)
+    # pygmsh.draw_inGmsh(points=pts)
+
     square_opencascade = geom.add_rectangle([0, 0, 0], 1.0, 1.0)
+
+    # pts, _, _, _, _ = pygmsh.generate_mesh(geom)
+    # pygmsh.draw_inGmsh(points=pts)
+
+
     geom.boolean_difference([square_opencascade], [square_builtin])
 
     ref = 0.75
     points, cells, _, _, _ = pygmsh.generate_mesh(geom)
+    pygmsh.draw_inGmsh(points=points)
+
+
     assert abs(compute_volume(points, cells) - ref) < 1.0e-2 * ref
     return points, cells
 

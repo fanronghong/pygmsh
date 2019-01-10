@@ -3,7 +3,7 @@
 import numpy as np
 import pygmsh
 
-from helpers import compute_volume
+from helpers import compute_volume, plot
 
 
 def test(irad=0.05, orad=0.6):
@@ -21,6 +21,7 @@ def test(irad=0.05, orad=0.6):
 
     ref = 2 * 2 * np.pi ** 2 * orad * irad ** 2
     points, cells, _, _, _ = pygmsh.generate_mesh(geom)
+    plot("fs", points, cells)
     assert np.isclose(compute_volume(points, cells), ref, rtol=5e-2)
     return points, cells
 

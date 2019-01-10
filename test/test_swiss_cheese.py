@@ -3,7 +3,7 @@
 import numpy as np
 import pygmsh
 
-from helpers import compute_volume
+from helpers import compute_volume, plot
 
 
 def test():
@@ -35,6 +35,7 @@ def test():
 
     ref = 4.07064892966291
     points, cells, _, _, _ = pygmsh.generate_mesh(geom)
+    pygmsh.draw_inGmsh(points=points)
     assert abs(compute_volume(points, cells) - ref) < 1.0e-2 * ref
     return points, cells
 

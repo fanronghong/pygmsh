@@ -4,7 +4,7 @@ from itertools import permutations
 
 import pygmsh
 
-from helpers import compute_volume
+from helpers import compute_volume, plot
 
 
 def test(lcar=1.0):

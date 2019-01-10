@@ -38,6 +38,7 @@ def test(lcar=0.05):
 
     ref = 0.16951514066385628
     points, cells, _, _, _ = pygmsh.generate_mesh(geom)
+    pygmsh.draw_inGmsh(points=points)
     assert abs(compute_volume(points, cells) - ref) < 1.0e-2 * ref
     return points, cells
 

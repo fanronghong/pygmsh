@@ -78,6 +78,6 @@ def plot(filename, points, cells):
     plt.gca().set_aspect("equal", "datalim")
     plt.axis("off")
 
-    # plt.show()
-    plt.savefig(filename, transparent=True)
+    plt.show()
+    # plt.savefig(filename, transparent=True)
     return

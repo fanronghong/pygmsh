@@ -2,7 +2,7 @@
 #
 import numpy
 
-from helpers import compute_volume
+from helpers import compute_volume, plot
 
 
 def test_volume():
@@ -23,5 +23,10 @@ def test_volume():
         "quad": numpy.array([[1, 2, 5, 6], [2, 3, 4, 5]]),
     }
     vol = compute_volume(points, cells)
+    plot("fs", points, cells)
     assert abs(vol - 3.0) < 1.0e-14
     return
+
+
+if __name__ == '__main__':
+    test_volume()

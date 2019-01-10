@@ -16,6 +16,8 @@ def test():
     disk1 = geom.add_disk([-1.2, 0.0, 0.0], 0.5)
     disk2 = geom.add_disk([+1.2, 0.0, 0.0], 0.5, 0.3)
     union = geom.boolean_union([rectangle, disk1, disk2])
+    points, cells, _, _, _ = pygmsh.generate_mesh(geom)
+    pygmsh.draw_inGmsh(points=points)
 
     disk3 = geom.add_disk([0.0, -0.9, 0.0], 0.5)
     disk4 = geom.add_disk([0.0, +0.9, 0.0], 0.5)
@@ -25,6 +27,7 @@ def test():
 
     ref = 1.1742114942
     points, cells, _, _, _ = pygmsh.generate_mesh(geom)
+    pygmsh.draw_inGmsh(points=points)
     assert abs(compute_volume(points, cells) - ref) < 1.0e-2 * ref
     return points, cells
 

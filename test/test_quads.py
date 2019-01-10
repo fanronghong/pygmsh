@@ -13,6 +13,8 @@ def test():
 
     ref = 1.0
     points, cells, _, _, _ = pygmsh.generate_mesh(geom, dim=2)
+    points, cells, _, _, _ = pygmsh.generate_mesh(geom)
+    pygmsh.draw_inGmsh(points=points)
 
     assert abs(compute_volume(points, cells) - ref) < 1.0e-2 * ref
 
